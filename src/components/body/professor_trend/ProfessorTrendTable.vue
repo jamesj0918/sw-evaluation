@@ -13,10 +13,18 @@
             </thead>
             <tbody>
                 <tr v-for="(entry,index) in filteredData" @click="gotoGraph(entry['Num'],entry['UserID'])">
-                    <td  v-for="(key,index_data) in data">
-                        {{entry[index_data]}}
+                    <td  >
+                        {{entry['UserID']}}
                     </td>
-
+                    <td  >
+                        {{entry['Grade']}}
+                    </td>
+                    <td  >
+                        {{entry['Department']}}
+                    </td>
+                    <td v-for="score in scores[index]">
+                        {{score.tscore}}
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -44,6 +52,7 @@
                 const sort_key = this.sort_key;
                 const order = this.sort_orders[sort_key] || 1;
                 let data = this.data;
+                let scores = this.scores;
                 if(sort_key){
                     data = data.slice().sort((a,b)=>{
                         a = a[sort_key];
@@ -67,6 +76,7 @@
             },
             gotoGraph(index,student_id){
                 location.reload();
+
                 this.$router.push('/student/'+student_id+'/trend/');
             }
         },
@@ -94,12 +104,8 @@
 
                     for(let i=0;i<response.data.length;i++){
                         this.data.push({
-                            response.data[i].student_id, response.data[i].grade, response.data[i].department,
+                            UserID: response.data[i].student_id, Grade: response.data[i].grade, Department: response.data[i].department,
                         })
-                        for(let j=0;j<response.data[i].scores.length;j++){
-                            this.data[i].append(response.data[i].scores[j].tscore);
-                        }
-
                         this.scores.push(response.data[i].scores)
                     }
                     for(let i=0;i<response.data[0].scores.length;i++){
