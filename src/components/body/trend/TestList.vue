@@ -83,4 +83,5 @@
     .list_menu:hover {
         background-color: rgba(85, 87, 92, 1);
     }
+
 </style>

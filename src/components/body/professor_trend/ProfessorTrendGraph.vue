@@ -1,6 +1,6 @@
 <template>
-    <div id="chart">
-        <apexchart type=area height=350c  :options="chartOptions" :series="series" />
+    <div id="ProfessorTrendGraph">
+        <apexchart id="chart" type=area height=350c  :options="chartOptions" :series="series" />
     </div>
 
 </template>
@@ -90,11 +90,19 @@
 </script>
 
 <style scoped>
+
     *{
-        margin : 0;
-        padding: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
     }
+
+    #ProfessorTrendGraph {
+        width: 100%; height: auto;
+    }
+
     #chart{
-        width: 80%;
+        width: 100%;
+        margin: 0 auto;
     }
+
 </style>
