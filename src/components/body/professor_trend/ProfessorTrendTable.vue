@@ -118,6 +118,12 @@
 </script>
 
 <style scoped>
+
+    *{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
+    }
+
     body {
         font-family: Helvetica Neue, Arial, sans-serif;
         font-size: 14px;
@@ -125,14 +131,14 @@
     }
 
     table {
-        border: 2px solid rgb(58,80,99);
+        border: 1px solid lightgray;
         border-radius: 3px;
-        background-color: #fff;
+        background: rgba(255,255,255,0);
         width: 80%;
     }
 
     th {
-        background-color: rgb(58,80,99);
+        background-color: rgb(97,99,104);
         color: rgba(255,255,255,0.66);
         cursor: pointer;
         -webkit-user-select: none;
@@ -142,7 +148,8 @@
     }
 
     td {
-        background-color: #f8f8f8;
+        background: rgba(255,255,255,0);
+        color: white;
         text-align: center;
     }
 
