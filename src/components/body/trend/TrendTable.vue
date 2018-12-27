@@ -78,14 +78,15 @@
     }
 
     table {
-        border: 2px solid rgb(58,80,99);
+        border: 1px solid lightgray;
         border-radius: 3px;
-        background-color: #fff;
-        width: 80%;
+        background: rgba(255,255,255,0);
+        width: 100%;
+
     }
 
     th {
-        background-color: rgb(58,80,99);
+        background-color: rgb(97,99,104);
         color: rgba(255,255,255,0.66);
         cursor: pointer;
         -webkit-user-select: none;
@@ -95,8 +96,9 @@
     }
 
     td {
-        background-color: #f8f8f8;
+        background: rgba(255,255,255,0);
         text-align: center;
+        color:white;
     }
 
     th, td {

@@ -1,6 +1,6 @@
 <template>
     <div id="ProfessorTestList">
-        <div id="title">내 점수 통계</div>
+        <div id="title">점수 통계</div>
         <div id="test_list_wrap">
             <div @click="go_to_test('C1')" class="list_menu">
                C언어 1차 인증
