@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.min.css'>
+
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+
     <title>sw-evaluation</title>
   </head>
   <body>
@@ -14,4 +19,17 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <style>
+    body {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      margin: 0; padding: 0;
+      /*width: 100vw; height: 100vh;*/
+      font-size: 14px;
+    }
+    body::after {
+      content: "";
+      display: table; /* NOTE: Display "block" does not seem to work with height: 0px. */
+      height: 0;
+    }
+  </style>
 </html>

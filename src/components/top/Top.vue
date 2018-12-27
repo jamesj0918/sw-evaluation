@@ -1,6 +1,10 @@
 <template>
-    <div id="top_wrap">
-        SW EVALUATION
+    <div id="top">
+        <div id="top_wrap">
+            <div id="page_title">Ex-Online Judge</div>
+            <div id="logout"><i class="sign out icon"></i>LOGOUT</div>
+            <div id="user_id"><i class="user icon"></i>17011564</div>
+        </div>
     </div>
 </template>
 
@@ -11,13 +15,48 @@
 </script>
 
 <style scoped>
-    #top_wrap{
-        display: inline-block;
-        width: 100%;
-        height: 100%;
+    *{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
+    }
+
+    #top {
+        height: 50px;
         text-align: center;
-        color: white;
-        font-size: 6vh;
-        font-weight: bold;
+        background-color: rgba(77,79,84,1);
+        border-bottom: 1px solid rgba(170, 170, 170, 1);
+    }
+
+    #top_wrap {
+        height: 50px; width: 80%;
+
+        color: rgba(163, 163, 163, 1);
+
+        display: inline-block;
+    }
+
+    #page_title {
+        font-size: 18px;
+        margin: 15px;
+        display: inline-block;
+        float: left;
+        line-height: 20px;
+    }
+
+    #user_id {
+        margin: 0 15px;
+        font-size: 14px;
+        line-height: 50px;
+        display: inline-block;
+        float: right;
+
+    }
+
+    #logout {
+        margin: 0 15px;
+        font-size: 14px;
+        line-height: 50px;
+        display: inline-block;
+        float: right;
     }
 </style>
