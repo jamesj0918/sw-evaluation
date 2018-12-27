@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="MainLayout">
         <div id="main_top">
             <top></top>
         </div>
@@ -20,17 +20,23 @@
 </script>
 
 <style scoped>
+    *{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    #MainLayout{
+        widht: 100%; height: calc(100vh - 1px);
+    }
+
+
     #main_top{
-        display: inline-block;
-        height: 7vh;
+        height: 50px;
         margin-bottom: 1px;
-        width: 100vw;
-        background: rgb(51,54,57);
+        width: 100%;
     }
     #main_body{
-        display:inline-block;
-        height: 90vh;
-        width: 100vw;
+        width: 100%; height: calc(100% - 50px - 10px);
+        padding-top: 10px;
         background: rgb(51,54,57);
     }
 
