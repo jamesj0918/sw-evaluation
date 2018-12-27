@@ -35,14 +35,17 @@
                 test: this.$route.params.test,
                 title: '',
                 question: 1,
-                data: [{
-                    Num: "1", Name: "문제1", Score: "100", TScore: "50", Highest : "100"
-                }],
-                columns: ["Num", "Name", "Score", "TScore", "Highest"]
+                data: [],
+                columns: ["Num", "Score", "TScore", "HighestScore"]
             }
         },//data
-
+        methods:{
+            show_graph(num){
+                console.log("hi"+num);
+            }
+        },
         mounted(){
+            this.$bus.$on('show-graph',this.show_graph);
             console.log("trend");
             if(this.test == 'C1'){
                 this.title = "C언어 1차 인증"
@@ -60,9 +63,15 @@
                 this.title
             }
 
-            axios.get('questions/tscore/?question=1')
+            axios.get('students/tscore/?student_id='+this.$route.params.student_id)
                 .then((response)=>{
                     console.log(response);
+                    for(let i=0;i<response.data.length;i++){
+                        this.data.push({
+                            Num: response.data[i].index, Score: response.data[i].score, TScore: response.data[i].tscore, HighestScore : response.data[i].highest_tscore
+                        })
+                    }
+                    console.log(this.data);
                 })
         },
     }

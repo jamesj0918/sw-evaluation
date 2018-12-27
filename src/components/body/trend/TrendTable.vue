@@ -11,8 +11,8 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                <tr v-for="entry in filteredData">
+            <tbody >
+                <tr v-for="entry in filteredData" @click="show_graph(entry['Num'])">
                     <td v-for="key in columns">
                         {{entry[key]}}
                     </td>
@@ -65,7 +65,11 @@
             sort_by(key){
                 this.sort_key = key;
                 this.sort_orders[key] = this.sort_orders[key] * -1;
+            },
+            show_graph(num){
+                this.$bus.$emit('show-graph',num);
             }
+
         },
     }
 </script>
@@ -95,7 +99,14 @@
         user-select: none;
     }
 
+    tbody{
+        display: inline-block;
+        overflow-y: scroll;
+        height: 100px;
+    }
+
     td {
+        display : inline-block;
         background: rgba(255,255,255,0);
         text-align: center;
         color:white;
@@ -113,6 +124,7 @@
     th.active .arrow {
         opacity: 1;
     }
+
 
     .arrow {
         display: inline-block;

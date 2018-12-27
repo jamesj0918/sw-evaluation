@@ -20,6 +20,7 @@
             return{
                 category: [],
                 data: [],
+                x: '',
                 series: [{
                     name: "Desktops",
                     data: [100, 300, 200, 400,],
@@ -29,21 +30,24 @@
                     },
 
                 }],
+
                 chartOptions:{
+                    title:{
+                        text:'번문제',
+                    },
                     annotations: {
                         xaxis: [{
-                            x: 114,
-                            offsetX: "50%",
+                            x: 100.5,
                             borderColor: '#FEB019',
                             label: {
-                                offsetX: "50%",
+                                x: 70,
                                 borderColor: '#FEB019',
                                 style: {
                                     color: '#fff',
                                     background: '#FEB019',
                                 },
                                 orientation: 'horizontal',
-                                text: 'New Beginning',
+                                text: 'ME',
                             }
                         }],
                     },
@@ -61,6 +65,7 @@
                     legend:{
                       show: false,
                     },
+
                     dataLabels:{
                         enabled: false,
                     },
@@ -69,6 +74,7 @@
                         zoom: {
                             enabled: false
                         },
+
                         background: 'none',
                         foreColor: 'lightgrey'
                     },
@@ -83,12 +89,61 @@
                     },
                     xaxis: {
                         categories: [],
+                        type: "numeric",
                         colors:[ 'white'],
                     }
                 }
             }
         },//data
+        methods:{
+
+            show_graph(num){
+                this.category=[];
+                this.data=[];
+                axios.get('questions/tscore/?question='+num)
+                    .then((response)=> {
+                        for (let i = 0; i < response.data.length; i++) {
+                            this.category.push(response.data[i].tscore);
+                            this.data.push(response.data[i].tie_count);
+                        }
+                        this.chartOptions = {
+                            xaxis:{
+                                categories: this.category
+                            },
+                            title:{
+                                text: num+'번 문제'
+                            }
+                        };
+                        this.series=[{
+                            data: this.data
+                        }]
+                    });
+
+                axios.get('students/tscore/?student_id='+this.$route.params.student_id)
+                    .then((response)=>{
+                        this.x = String(response.data[num-1].tscore);
+                        this.chartOptions = {
+                            annotations:{
+                                xaxis: [{
+                                    x: this.x,
+                                    borderColor: 'rgb(163,69,180)',
+                                    label: {
+                                        borderColor: 'rgb(163,69,180)',
+                                        style: {
+                                            color: '#fff',
+                                            background: 'rgb(163,69,180)',
+                                        },
+                                        orientation: 'horizontal',
+                                        text: 'ME',
+                                    }
+                                }]
+                            }
+                        }
+                    })
+            }
+        },
         mounted(){
+            this.$bus.$on('show-graph',this.show_graph);
             axios.get('questions/tscore/?question=1')
                 .then((response)=> {
                     for (let i = 0; i < response.data.length; i++) {
@@ -105,9 +160,27 @@
                     }]
                 });
 
-            axios.get('students/tscore/?student_id=18010001')
+            axios.get('students/tscore/?student_id='+this.$route.params.student_id)
                 .then((response)=>{
-
+                    this.x = String(response.data[0].tscore);
+                    console.log(String(this.x));
+                    this.chartOptions = {
+                        annotations:{
+                            xaxis: [{
+                                x: this.x,
+                                borderColor: 'rgb(163,69,180)',
+                                label: {
+                                    borderColor: 'rgb(163,69,180)',
+                                    style: {
+                                        color: '#fff',
+                                        background: 'rgb(163,69,180)',
+                                    },
+                                    orientation: 'horizontal',
+                                    text: 'ME',
+                                }
+                            }]
+                        }
+                    }
                 })
         }
     }

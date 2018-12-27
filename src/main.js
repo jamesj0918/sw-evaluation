@@ -18,6 +18,7 @@ Vue.use(VueApexCharts);
 
 axios.defaults.baseURL = "https://evaluator-api.herokuapp.com/api/";
 
+Vue.prototype.$bus = new Vue();
 Vue.config.productionTip = false;
 
 new Vue({
