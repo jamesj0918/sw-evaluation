@@ -24,6 +24,14 @@
 
                 }],
                 chartOptions:{
+                    theme: {
+                        monochrome: {
+                            enabled: true,
+                            color: 'lightgray',
+                            shadeTo: 'light',
+                            shadeIntensity: 0.65
+                        },
+                    },
                     annotations: {
                         xaxis: [{
                             x: 1000,

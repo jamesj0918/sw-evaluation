@@ -1,7 +1,7 @@
 <template>
     <div id="top">
         <div id="top_wrap">
-            <div id="page_title">Ex-Online Judge</div>
+            <div id="page_title" @click="go_to_home">Ex-Online Judge</div>
             <div id="logout"><i class="sign out icon"></i>LOGOUT</div>
             <div id="user_id"><i class="user icon"></i>17011564</div>
         </div>
@@ -11,6 +11,11 @@
 <script>
     export default {
         name: "Top",
+        methods:{
+            go_to_home(){
+                this.$router.push('/')
+            }
+        }
     }
 </script>
 

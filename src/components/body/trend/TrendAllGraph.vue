@@ -26,7 +26,7 @@
                     theme: {
                         monochrome: {
                             enabled: true,
-                            color: 'rgb(58,80,99)',
+                            color: 'lightgray',
                             shadeTo: 'light',
                             shadeIntensity: 0.65
                         },
@@ -42,21 +42,22 @@
                         zoom: {
                             enabled: false
                         },
-                        background: 'rgba(255,255,255, 0.6)',
-                        foreColor: 'rgb(58,80,99)'
+                        background: 'rgba(255,255,255, 0)',
+                        foreColor: 'lightgrey'
                     },
                     stroke: {
                         curve: 'smooth',
                     },
                     grid: {
                         row: {
-                            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                            opacity: 0.5
+                            colors: 'rgb(58,80,99)', // takes an array which will be repeated on columns
+                            opacity: 0
                         },
                     },
                     xaxis: {
-                        categories: ["C언어 1차", "C언어 2차", "고급 C언어 1차" , "고급 C언어 2차"],
-                        colors:[ 'rgb(58,80,99)'],
+                        categories: ["C언어 1차","C언어 2차", "고급C 1차","고급C 2차"],
+                        type: "category",
+                        colors:[ 'white'],
                     }
                 }
             }
