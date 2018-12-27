@@ -1,14 +1,12 @@
 <template>
-    <div id="trend_wrap">
-        <div id="test_list_wrap">
-            <test-list></test-list>
-        </div>
-
-        <div id="test_analysis">
-            <router-view></router-view>
-        </div>
+    <div id="TrendLayout">
+            <div id="test_list_wrap">
+                <test-list></test-list>
+            </div>
+            <div id="test_analysis">
+                <router-view></router-view>
+            </div>
     </div>
-
 </template>
 
 <script>
@@ -25,30 +23,33 @@
 </script>
 
 <style scoped>
+
     *{
-        margin: 0;
-        padding: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
     }
-    #trend_wrap{
-        display: inline-block;
-        width: 100%;
+
+    /*************id css*************/
+
+    #TrendLayout {
         height: 100%;
+        margin: 0 5%;
+        padding: 0 15px;
     }
 
     #test_list_wrap{
+        width: 22%; height: 100%;
         display: inline-block;
-        width: 25%;
-        margin: 1%;
-        border-radius: 10px;
-        height: auto;
         float: left;
-        background: darkgray;
     }
 
     #test_analysis{
+        width: calc(100% - 22% - 30px - 15px);
+        padding: 0 15px;
         display: inline-block;
-        width: 70%;
         float: right;
-
     }
+
+    /*************class css*************/
+
 </style>

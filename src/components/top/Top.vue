@@ -28,7 +28,7 @@
     }
 
     #top_wrap {
-        height: 50px; width: 80%;
+        height: 50px; width: 90%;
 
         color: rgba(163, 163, 163, 1);
 
