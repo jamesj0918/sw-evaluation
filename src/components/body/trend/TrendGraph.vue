@@ -1,6 +1,6 @@
 <template>
     <div id="TrendGraph">
-        <apexchart id="chart" type=area height=350c :options="chartOptions"  :series="series" />
+        <apexchart id="chart" type="area" height=350c :options="chartOptions"  :series="series" />
     </div>
 </template>
 
@@ -23,17 +23,37 @@
                 test_pk: 1,
                 x: '',
                 series: [{
-                    name: "Desktops",
-                    data: [100, 300, 200, 400,],
+                    name: "Students",
+                    data: [],
 
                     labels:{
                         enabled: false,
                     },
 
                 }],
+
                 chartOptions:{
                     title:{
                         text:'번문제',
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                position: 'top', // top, center, bottom
+                            },
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false,
+                        /*
+                        formatter: function (val) {
+                            return val + "명";
+                        },*/
+                        offsetY: -20,
+                        style: {
+                            fontSize: '12px',
+                            colors: ["white"]
+                        }
                     },
                     annotations: {
                         xaxis: [{
@@ -54,7 +74,7 @@
                     theme: {
                         monochrome: {
                             enabled: true,
-                            color: 'lightgray',
+                            color: 'lightgrey',
                             shadeTo: 'light',
                             shadeIntensity: 0.65
                         },
@@ -65,18 +85,12 @@
                     legend:{
                       show: false,
                     },
-
-                    dataLabels:{
-                        enabled: false,
-                    },
                     chart: {
                         height: 350,
                         zoom: {
                             enabled: false
                         },
 
-                        background: 'none',
-                        foreColor: 'lightgrey'
                     },
                     stroke: {
                         curve: 'smooth',
@@ -126,7 +140,36 @@
                             },
                             title:{
                                 text: num+'번 문제'
-                            }
+                            },
+                            theme: {
+                                monochrome: {
+                                    enabled: true,
+                                    color: 'lightgrey',
+                                    shadeTo: 'light',
+                                    shadeIntensity: 0.65
+                                },
+                            },
+                            dataLabels: {
+                                enabled: false,
+                                /*
+                                formatter: function (val) {
+                                    return val + "명";
+                                },*/
+                                offsetY: -20,
+                                style: {
+                                    fontSize: '12px',
+                                    colors: ["white"]
+                                }
+                            },
+                            chart: {
+                                height: 350,
+                                zoom: {
+                                    enabled: false
+                                },
+
+                                background: 'none',
+                                foreColor: 'lightgrey'
+                            },
                         };
                         this.series=[{
                             data: this.data
@@ -157,26 +200,61 @@
             }
         },
         mounted(){
-
+            if(this.test=='C1'){
+                this.test_pk = 1;
+            }
+            else if(this.test=='C2'){
+                this.test_pk = 2;
+            }
+            else if(this.test=='AC1'){
+                this.test_pk = 3;
+            }
+            else if(this.test=='AC2'){
+                this.test_pk = 4;
+            }
             this.$bus.$on('show-graph',this.show_graph);
             axios.get(this.test_pk+'/tscores/')
                 .then((response)=> {
-                    console.log(response);
+                    console.log(response.data);
+                    for(let i=0;i<response.data.length;i++){
+                        this.category.push(response.data[i].tscore);
+                        this.data.push(response.data[i].tie_count);
+                    }
+                    console.log(this.category);
                     this.chartOptions = {
                         xaxis:{
                             categories: this.category
-                        }
+                        },
+                        theme: {
+                            monochrome: {
+                                enabled: true,
+                                color: 'lightgray',
+                                shadeTo: 'light',
+                                shadeIntensity: 0.65
+                            },
+                        },
+                        chart: {
+                            height: 350,
+                            zoom: {
+                                enabled: false
+                            },
+                            type: 'area',
+                            background: 'rgba(255,255,255, 0)',
+                            foreColor: 'lightgrey'
+                        },
+
                     };
                     this.series=[{
                         data: this.data
                     }]
                 });
 
-            axios.get(this.test_pk+'/students/tscore/?student_id='+this.$route.params.student_id)
+            axios.get(this.test_pk+'/tscore/?student_id='+this.$route.params.student_id)
                 .then((response)=>{
-                    this.x = String(response.data[0].tscore);
-                    console.log(String(this.x));
+
+                    this.x = String(response.data.tscore);
                     this.chartOptions = {
+
                         annotations:{
                             xaxis: [{
                                 x: this.x,

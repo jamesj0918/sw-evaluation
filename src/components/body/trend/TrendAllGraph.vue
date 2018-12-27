@@ -6,7 +6,7 @@
 
 <script>
     import ApexCharts from 'vue-apexcharts'
-
+    import axios from 'axios'
     export default {
         name: "TrendGraph",
         components: {
@@ -14,6 +14,7 @@
         },
         data(){
             return{
+                data:[0,0,0,0],
                 series: [{
                     name: "Desktops",
                     data: [100, 300, 200, 400],
@@ -63,8 +64,18 @@
             }
         },//data
         mounted(){
-            var chart = new ApexCharts(document.querySelector("#chart"), this.chartOptions);
-            chart.render();
+            for(let i=1;i<=4;i++){
+                axios.get(i+'/tscore/?student_id='+this.$route.params.student_id)
+                    .then((response)=>{
+                        console.log(response);
+                        this.data[i-1]=response.data.tscore_average;
+                        this.series=[{
+                            data: this.data
+                        }]
+                    })
+            }
+
+
         }
     }
 </script>
