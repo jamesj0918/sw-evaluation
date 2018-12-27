@@ -114,9 +114,13 @@
 
     #content {
         width: 100%; height: auto;
-        padding-bottom: 20px;
+        /*padding-bottom: 20px;*/
         margin-top: calc(120px - 20px - 32px - 30px - 17px);
-        overflow-x: auto; overflow-y: auto;
+        /*overflow-x: auto; overflow-y: auto;*/
+    }
+
+    #trend_view {
+        width: 100%; height: auto;
     }
 
     /*************class css*************/
