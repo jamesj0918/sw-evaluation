@@ -1,8 +1,7 @@
 <template>
-    <div >
+    <div id="TrendGraph">
         <apexchart id="chart" type=area height=350c :options="chartOptions"  :series="series" />
     </div>
-
 </template>
 
 <script>
@@ -121,10 +120,15 @@
 
     /*************id css*************/
 
+    #TrendGraph {
+        width: 100%; height: auto;
+    }
+
     #chart {
         width: 100%;
         margin: 0 auto;
     }
 
     /*************class css*************/
+
 </style>

@@ -1,8 +1,6 @@
 <template>
     <div id="TrendAllGraph">
-        <div id="chart">
-            <apexchart type=line height=350c  :options="chartOptions" :series="series" />
-        </div>
+        <apexchart id="chart" type=line height=350c  :options="chartOptions" :series="series" />
     </div>
 </template>
 

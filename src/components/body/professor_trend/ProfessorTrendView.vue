@@ -1,21 +1,22 @@
 <template>
-    <div id="trend_view_wrap">
+    <div id="ProfessorTrendView">
         <div id="title">
             {{title}}
         </div>
-        <div>
-            <div @click="showTable">
-                Table
-            </div>
-            <div @click="showGraph()">
-                Graph
+        <div id="menu_wrap">
+            <span @click="showTable" class="menu_link">
+                [ Table ]
+            </span>
+            &nbsp;&nbsp;&nbsp;
+            <span @click="showGraph()" class="menu_link">
+                [ Graph ]
+            </span>
+        </div>
+        <div id="content">
+            <div id="trend_view">
+                <router-view></router-view>
             </div>
         </div>
-        <div id="trend_view">
-            <router-view></router-view>
-        </div>
-
-
     </div>
 
 </template>
@@ -70,22 +71,61 @@
 </script>
 
 <style scoped>
+
+    *{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
+    }
+
     trend{
         display: inline-block;
         width: 50%;
         height: 10%;
     }
-    #trend_view_wrap{
-        display:inline-block;
-        width: 100%;
-        height: 100%;
-        background:rgb(51,54,57);
+
+    /*************id css*************/
+
+    #ProfessorTrendView{
+        width: 100%; height: auto;
     }
-    #title{
-        font-size: 30px;
-        font-weight: bold;
-        color: white;
-        padding-top: 10px;
+
+    #title {
+        margin: 20px 0 10px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 500;
+        color: rgba(231, 234, 237, 0.7);
+    }
+
+    #title {
+        margin: 20px 0 10px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 500;
+        color: rgba(231, 234, 237, 0.7);
+    }
+
+    #menu_wrap {
+        margin: 30px 0 10px 0;
+        font-size: 24px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    #content {
+        width: 100%; height: auto;
+        padding-bottom: 20px;
+        margin-top: calc(120px - 20px - 32px - 30px - 17px);
+        overflow-x: auto; overflow-y: auto;
+    }
+
+    /*************class css*************/
+
+    .menu_link {
+        text-decoration: none;
+        color: #337ab7;
+        outline: none;
+        cursor: pointer;
     }
 
 </style>
