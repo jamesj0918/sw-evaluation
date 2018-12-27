@@ -2,14 +2,14 @@
     <div id="ProfessorTrendGraph">
         <apexchart id="chart" type=area height=350c  :options="chartOptions" :series="series" />
 
-        <div>
-            <select v-model="flag">
+        <div id="menu_wrap">
+            <select v-model="flag" id="select_wrap">
                 <option disabled value=""></option>
                 <option >문항</option>
                 <option >분반</option>
                 <option >학과</option>
             </select>
-            <input v-model="division"/>
+            <input id="input_menu" v-model="division"/>
         </div>
         <button @click="show_graph">
             확인
@@ -247,6 +247,39 @@
         margin: 0; padding: 0;
     }
 
+    select:focus {
+        outline: none;
+    }
+
+    input {
+        height: 25px;
+        border: rgb(51,54,57);
+        border-radius: 4px;
+        padding-left: 10px; padding-right: 10px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input:focus::placeholder {
+        color: rgba(231, 234, 237, 1);
+    }
+
+    button {
+        padding: 5px 15px;
+        background-color: rgba(231, 234, 237, 1);
+        border: 1px solid rgb(51,54,57);
+        border-radius: 4px;
+        color: rgb(51,54,57);
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block; float: right;
+        cursor: pointer;
+    }
+
     #ProfessorTrendGraph {
         width: 100%; height: auto;
     }
@@ -254,6 +287,16 @@
     #chart{
         width: 100%;
         margin: 0 auto;
+    }
+
+    #menu_wrap {
+        margin-bottom: 15px;
+    }
+
+    #select_wrap {
+        width: 60px; height: 25px;
+        border-radius: 4px;
+        margin-right: 15px;
     }
 
 </style>
