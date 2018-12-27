@@ -41,7 +41,7 @@
     }
 
     #test_analysis{
-        width: calc(100% - 22% - 30px - 15px);
+        width: calc(100% - 22% - 30px - 15px); height: 100%;
         padding-left: 15px;
         display: inline-block;
         float: right;
