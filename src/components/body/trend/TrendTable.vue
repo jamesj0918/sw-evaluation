@@ -11,7 +11,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody>
                 <tr v-for="entry in filteredData" @click="show_graph(entry['Num'])">
                     <td v-for="key in columns">
                         {{entry[key]}}
@@ -75,6 +75,12 @@
 </script>
 
 <style scoped>
+
+    *{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
+    }
+
     body {
         font-family: Helvetica Neue, Arial, sans-serif;
         font-size: 14px;
@@ -82,11 +88,14 @@
     }
 
     table {
+        width: 100%; height: 100%;
         border: 1px solid lightgray;
         border-radius: 3px;
         background: rgba(255,255,255,0);
-        width: 100%;
+    }
 
+    table thead {
+        width: 100%;
     }
 
     th {
@@ -99,14 +108,15 @@
         user-select: none;
     }
 
-    tbody{
-        display: inline-block;
-        overflow-y: scroll;
-        height: 100px;
+    table tbody{
+        width: 100%; height: 100%;/*calc(100% - 36px - 1px);*/
+        display: inline-block; float: left;
+        overflow-y: auto;
+
     }
 
     td {
-        display : inline-block;
+        width: 25%;
         background: rgba(255,255,255,0);
         text-align: center;
         color:white;
@@ -125,6 +135,17 @@
         opacity: 1;
     }
 
+    th {
+        width: 25%;
+    }
+
+    /*************id css*************/
+
+    #TrendTable {
+        width: 100%; height: 100%;
+    }
+
+    /*************class css*************/
 
     .arrow {
         display: inline-block;

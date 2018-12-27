@@ -93,7 +93,7 @@
     /*************id css*************/
 
     #TrendView{
-        width: 100%; height: auto;
+        width: 100%; height: calc(100% - 20px);
     }
 
     #title {
@@ -113,7 +113,12 @@
     }
 
     #content {
-        margin-top: calc(120px - 20px - 10px - 32px);
+        height: calc(100% - 58px - 62px);
+        margin-top: 58px;
+    }
+
+    #trend_table {
+        width: 100%; height: calc(100% - 364px);
     }
 
     /*************class css*************/
