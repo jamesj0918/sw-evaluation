@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="TrendTable">
         <table>
             <thead>
                 <tr>

@@ -1,8 +1,9 @@
 <template>
-    <div id="chart">
-        <apexchart type=line height=350c  :options="chartOptions" :series="series" />
+    <div id="TrendAllGraph">
+        <div id="chart">
+            <apexchart type=line height=350c  :options="chartOptions" :series="series" />
+        </div>
     </div>
-
 </template>
 
 <script>
@@ -70,11 +71,23 @@
 </script>
 
 <style scoped>
+
     *{
-        margin : 0;
-        padding: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
     }
+
+    /*************id css*************/
+
+    #TrendAllGraph {
+        width: 100%; height: auto;
+    }
+
     #chart{
-        width: 80%;
+        width: 100%;
+        margin: 0 auto;
     }
+
+    /*************class css*************/
+
 </style>

@@ -1,18 +1,19 @@
 <template>
-    <div id="trend_view_wrap">
+    <div id="TrendView">
         <div id="title">
             {{title}}
         </div>
-        <div id="trend_view">
-            <trend-graph></trend-graph>
+        <div id="content">
+            <div id="trend_view">
+                <trend-graph></trend-graph>
+            </div>
+            <div id="trend_table">
+                <trend-table
+                        :data = "data"
+                        :columns = "columns"
+                ></trend-table>
+            </div>
         </div>
-        <div id="trend_table">
-            <trend-table
-                    :data = "data"
-                    :columns = "columns"
-            ></trend-table>
-        </div>
-
     </div>
 
 </template>
@@ -60,22 +61,47 @@
 </script>
 
 <style scoped>
+
+    *{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0; padding: 0;
+    }
+
     trend{
         display: inline-block;
         width: 50%;
         height: 10%;
     }
-    #trend_view_wrap{
-        display:inline-block;
-        width: 100%;
-        height: 100%;
-        background:rgb(51,54,57);
+
+    /*************id css*************/
+
+    #TrendView{
+        width: 100%; height: auto;
     }
-    #title{
-        font-size: 30px;
-        font-weight: bold;
-        color: white;
-        padding-top: 10px;
+
+    #title {
+        margin: 20px 0 10px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 500;
+        color: rgba(231, 234, 237, 0.7);
     }
+
+    #title {
+        margin: 20px 0 10px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 500;
+        color: rgba(231, 234, 237, 0.7);
+    }
+
+    #content {
+        margin-top: calc(120px - 20px - 10px - 32px);
+    }
+
+    /*************class css*************/
+
+
+
 
 </style>

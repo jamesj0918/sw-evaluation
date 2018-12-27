@@ -1,11 +1,11 @@
 <template>
     <div id="TrendLayout">
-            <div id="test_list_wrap">
-                <test-list></test-list>
-            </div>
-            <div id="test_analysis">
-                <router-view></router-view>
-            </div>
+        <div id="test_list_wrap">
+            <test-list></test-list>
+        </div>
+        <div id="test_analysis">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -45,7 +45,7 @@
 
     #test_analysis{
         width: calc(100% - 22% - 30px - 15px);
-        padding: 0 15px;
+        padding-left: 15px;
         display: inline-block;
         float: right;
     }
