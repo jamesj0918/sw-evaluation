@@ -4,7 +4,7 @@
             {{title}}
         </div>
         <div id="trend_view">
-            <trend-graph></trend-graph>
+            <trend-graph :question=question></trend-graph>
         </div>
         <div id="trend_table">
             <trend-table
@@ -20,6 +20,7 @@
 <script>
     import TrendTable from './TrendTable'
     import TrendGraph from "./TrendGraph";
+    import axios from 'axios'
 
     export default {
         name: "TrendView",
@@ -31,6 +32,7 @@
             return{
                 test: this.$route.params.test,
                 title: '',
+                question: 1,
                 data: [{
                     Num: "1", Name: "문제1", Score: "100", TScore: "50", Highest : "100"
                 }],
@@ -55,6 +57,11 @@
             else if(this.test == 'ALL'){
                 this.title
             }
+
+            axios.get('questions/tscore/?question=1')
+                .then((response)=>{
+                    console.log(response);
+                })
         },
     }
 </script>

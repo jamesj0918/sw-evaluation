@@ -1,23 +1,29 @@
 <template>
-    <div id="chart">
-        <apexchart type=area height=350c  :options="chartOptions" :series="series" />
+    <div >
+        <apexchart id="chart" type=area height=350c :options="chartOptions"  :series="series" />
     </div>
 
 </template>
 
 <script>
     import ApexCharts from 'vue-apexcharts'
-
+    import axios from 'axios'
     export default {
         name: "TrendGraph",
         components: {
             'apexchart': ApexCharts,
         },
+        props:{
+            question: Number,
+        },
         data(){
             return{
+                category: [],
+                data: [],
                 series: [{
                     name: "Desktops",
-                    data: [100, 300, 200, 400],
+                    data: [100, 300, 200, 400,],
+
                     labels:{
                         enabled: false,
                     },
@@ -26,7 +32,7 @@
                 chartOptions:{
                     annotations: {
                         xaxis: [{
-                            x: 1000,
+                            x: 114,
                             offsetX: "50%",
                             borderColor: '#FEB019',
                             label: {
@@ -44,7 +50,7 @@
                     theme: {
                         monochrome: {
                             enabled: true,
-                            color: 'rgb(58,80,99)',
+                            color: 'lightgray',
                             shadeTo: 'light',
                             shadeIntensity: 0.65
                         },
@@ -63,28 +69,46 @@
                         zoom: {
                             enabled: false
                         },
-                        background: 'rgba(255,255,255, 0.6)',
-                        foreColor: 'rgb(58,80,99)'
+                        background: 'none',
+                        foreColor: 'lightgrey'
                     },
                     stroke: {
                         curve: 'smooth',
                     },
                     grid: {
                         row: {
-                            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                            opacity: 0.5
+                            colors: 'rgb(58,80,99)', // takes an array which will be repeated on columns
+                            opacity: 0
                         },
                     },
                     xaxis: {
-                        categories: ["C언어 1차", "C언어 2차", "고급 C언어 1차" , "고급 C언어 2차"],
-                        colors:[ '#f8f8f8'],
+                        categories: [],
+                        colors:[ 'white'],
                     }
                 }
             }
         },//data
         mounted(){
-            var chart = new ApexCharts(document.querySelector("#chart"), this.chartOptions);
-            chart.render();
+            axios.get('questions/tscore/?question=1')
+                .then((response)=> {
+                    for (let i = 0; i < response.data.length; i++) {
+                        this.category.push(response.data[i].tscore);
+                        this.data.push(response.data[i].tie_count);
+                    }
+                    this.chartOptions = {
+                        xaxis:{
+                            categories: this.category
+                        }
+                    };
+                    this.series=[{
+                        data: this.data
+                    }]
+                });
+
+            axios.get('students/tscore/?student_id=18010001')
+                .then((response)=>{
+
+                })
         }
     }
 </script>
