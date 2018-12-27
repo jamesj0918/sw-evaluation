@@ -115,10 +115,16 @@
 
 <style scoped>
     *{
-        margin : 0;
-        padding: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
     }
-    #chart{
-        width: 80%;
+
+    /*************id css*************/
+
+    #chart {
+        width: 100%;
+        margin: 0 auto;
     }
+
+    /*************class css*************/
 </style>

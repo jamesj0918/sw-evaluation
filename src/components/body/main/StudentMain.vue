@@ -1,5 +1,5 @@
 <template>
-    <div id="main_wrap">
+    <div id="StudentMain">
         <router-view></router-view>
     </div>
 </template>
@@ -21,10 +21,8 @@
 </script>
 
 <style scoped>
-    #main_wrap{
-        display: inline-block;
+    #StudentMain{
         width: 100%;
         height: 100%;
-        background:
     }
 </style>

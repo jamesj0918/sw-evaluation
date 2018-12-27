@@ -1,5 +1,5 @@
 <template>
-    <div id="trend_wrap">
+    <div id="ProfessorTrendLayout">
         <div id="test_list_wrap">
             <test-list></test-list>
         </div>
@@ -26,29 +26,30 @@
 
 <style scoped>
     *{
-        margin: 0;
-        padding: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
     }
-    #trend_wrap{
-        display: inline-block;
-        width: 100%;
+
+    /*************id css*************/
+
+    #ProfessorTrendLayout {
         height: 100%;
+        margin: 0 5%;
+        padding: 0 15px;
     }
 
     #test_list_wrap{
+        width: 22%; height: 100%;
         display: inline-block;
-        width: 25%;
-        margin: 1%;
-        border-radius: 10px;
-        height: auto;
         float: left;
-        background: darkgray;
     }
 
     #test_analysis{
+        width: calc(100% - 22% - 30px - 15px);
+        padding-left: 15px;
         display: inline-block;
-        width: 70%;
         float: right;
-
     }
+
+    /*************class css*************/
 </style>
