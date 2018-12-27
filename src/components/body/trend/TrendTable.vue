@@ -12,8 +12,8 @@
                 </tr>
             </thead>
             <tbody >
-                <tr v-for="entry in filteredData" @click="show_graph(entry['Num'])">
-                    <td v-for="key in columns">
+                <tr v-for="entry in filteredData" @click="show_graph(entry['Num'])" >
+                    <td v-for="key in columns" style="cursor: pointer">
                         {{entry[key]}}
                     </td>
                 </tr>
@@ -75,6 +75,12 @@
 </script>
 
 <style scoped>
+
+    *{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 0; padding: 0;
+    }
+
     body {
         font-family: Helvetica Neue, Arial, sans-serif;
         font-size: 14px;
@@ -82,11 +88,14 @@
     }
 
     table {
+        width: 100%; height: 100%;
         border: 1px solid lightgray;
         border-radius: 3px;
         background: rgba(255,255,255,0);
-        width: 100%;
+    }
 
+    thead {
+        background-color: rgb(97,99,104);
     }
 
     th {
@@ -100,9 +109,9 @@
     }
 
     tbody{
+        height: 100%;
         display: inline-block;
-        overflow-y: scroll;
-        height: 100px;
+        overflow-y: auto;
     }
 
     td {
@@ -125,6 +134,53 @@
         opacity: 1;
     }
 
+    /********************************/
+
+    table {
+        width: 100%;
+        border-spacing: 0;
+    }
+
+    thead, tbody, tr, th, td { display: block; }
+
+    thead tr {
+        /* fallback */
+        width: 97%;
+        /* minus scroll bar width */
+        width: -webkit-calc(100% - 16px);
+        width:    -moz-calc(100% - 16px);
+        width:         calc(100% - 16px);
+    }
+
+    tr:after {  /* clearing float */
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    tbody {
+        height: calc(100% - 36px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    tbody td, thead th {
+        width: 18.5%;  /* 19% is less than (100% / 5 cols) = 20% */
+        float: left;
+    }
+
+    td:hover {
+        background-color: rgba(97,99,104, 0.5);
+    }
+
+    /*************id css*************/
+
+    #TrendTable {
+        width: 100%; height: 100%;
+    }
+
+    /*************class css*************/
 
     .arrow {
         display: inline-block;
