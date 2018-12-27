@@ -26,6 +26,7 @@
 
     #MainLayout{
         width: 100%; height: calc(100vh - 1px);
+
     }
 
 

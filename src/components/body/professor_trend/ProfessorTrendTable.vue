@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="ProfessorTrendTable">
         <table>
             <thead>
                 <tr>
@@ -117,6 +117,17 @@
 
     th.active .arrow {
         opacity: 1;
+    }
+
+    #ProfessorTrendTable {
+        width: 100%; height: auto;
+        text-align: center;
+        padding-bottom: 20px;
+        overflow: auto;
+    }
+
+    table {
+        min-width: 100%;
     }
 
     .arrow {
