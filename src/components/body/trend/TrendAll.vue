@@ -12,11 +12,15 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import TrendAllGraph from './TrendAllGraph'
     export default {
         name: "TrendAll",
         components:{
             'trend-all-graph': TrendAllGraph,
+        },
+        mounted:{
+
         }
     }
 </script>

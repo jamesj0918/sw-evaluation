@@ -133,7 +133,7 @@
                         }]
                     });
 
-                axios.get(this.test_pk+'1/students/tscore/?student_id='+this.$route.params.student_id)
+                axios.get(this.test_pk+'/students/tscore/?student_id='+this.$route.params.student_id)
                     .then((response)=>{
                         this.x = String(response.data[num-1].tscore);
                         this.chartOptions = {
@@ -159,12 +159,9 @@
         mounted(){
 
             this.$bus.$on('show-graph',this.show_graph);
-            axios.get(this.test_pk+'/questions/tscore/?question=1')
+            axios.get(this.test_pk+'/tscores/')
                 .then((response)=> {
-                    for (let i = 0; i < response.data.length; i++) {
-                        this.category.push(response.data[i].tscore);
-                        this.data.push(response.data[i].tie_count);
-                    }
+                    console.log(response);
                     this.chartOptions = {
                         xaxis:{
                             categories: this.category
@@ -175,7 +172,7 @@
                     }]
                 });
 
-            axios.get('students/tscore/?student_id='+this.$route.params.student_id)
+            axios.get(this.test_pk+'/students/tscore/?student_id='+this.$route.params.student_id)
                 .then((response)=>{
                     this.x = String(response.data[0].tscore);
                     console.log(String(this.x));
