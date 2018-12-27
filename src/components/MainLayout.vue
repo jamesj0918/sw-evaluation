@@ -9,7 +9,6 @@
     </div>
 </template>
 
-
 <script>
     import Top from './top/Top'
     export default {

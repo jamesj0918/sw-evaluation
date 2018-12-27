@@ -12,9 +12,6 @@
         <div @click="go_to_test('AC2')">
             고급C언어 2차 인증
         </div>
-        <div @click="go_to_test('')">
-            전체 성적
-        </div>
     </div>
 
 </template>
@@ -29,7 +26,7 @@
         },
         methods:{
             go_to_test(test){
-                this.$router.push('/student/'+this.student_id+'/trend/'+test);
+                this.$router.push('/professor/trend/'+test);
                 location.reload();
             }
         }
