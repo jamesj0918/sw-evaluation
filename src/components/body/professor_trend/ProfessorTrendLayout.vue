@@ -18,9 +18,6 @@
         components:{
             'test-list': TestList,
         },
-        data(){
-
-        }
     }
 </script>
 

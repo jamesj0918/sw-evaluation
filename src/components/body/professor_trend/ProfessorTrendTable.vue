@@ -13,9 +13,10 @@
             </thead>
             <tbody>
                 <tr v-for="(entry,index) in filteredData" @click="gotoGraph(entry['Num'],entry['UserID'])">
-                    <td v-for="(key) in columns" >
-                        {{entry[key]}}
+                    <td  v-for="(key,index_data) in data">
+                        {{entry[index_data]}}
                     </td>
+
                 </tr>
             </tbody>
         </table>
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name: "ProfessorTrendTable",
         data(){
@@ -30,11 +32,11 @@
             return{
                 sort_key: '',
                 sort_orders : {},
+                scores: [],
                 test: this.$route.params.test,
-                data: [{
-                    Num: "1", UserID: "17011572", Grade: 1, Class: 1,Department: "컴퓨터공학과",Total:200, 1: 100, 2: 80, 3: 20
-                }],
-                columns: ["Num", "UserID", "Grade","Class","Department","Total","1", "2","3",]
+                test_pk:0,
+                data: [],
+                columns: ["UserID", "Grade","Department"]
             }
         },//data
         computed:{
@@ -42,13 +44,13 @@
                 const sort_key = this.sort_key;
                 const order = this.sort_orders[sort_key] || 1;
                 let data = this.data;
-
                 if(sort_key){
                     data = data.slice().sort((a,b)=>{
                         a = a[sort_key];
                         b = b[sort_key];
                         return (a === b ? 0 : a > b ? 1 : -1)*order
                     })
+
                 }
                 return data
             }
@@ -65,7 +67,6 @@
             },
             gotoGraph(index,student_id){
                 location.reload();
-
                 this.$router.push('/student/'+student_id+'/trend/');
             }
         },
@@ -73,6 +74,39 @@
             this.columns.forEach(key=>{
                this.sort_orders[key] = 1;
             });
+
+            if(this.test == 'C1'){
+                this.test_pk = 1
+            }
+            else if(this.test == 'C2'){
+                this.test_pk = 2
+            }
+            else if(this.test == 'AC1'){
+                this.test_pk = 3
+            }
+            else if(this.test == 'AC2'){
+                this.test_pk = 4
+            }
+
+            axios.get('students/?exam='+this.test_pk)
+                .then((response)=>{
+                    console.log(response);
+
+                    for(let i=0;i<response.data.length;i++){
+                        this.data.push({
+                            response.data[i].student_id, response.data[i].grade, response.data[i].department,
+                        })
+                        for(let j=0;j<response.data[i].scores.length;j++){
+                            this.data[i].append(response.data[i].scores[j].tscore);
+                        }
+
+                        this.scores.push(response.data[i].scores)
+                    }
+                    for(let i=0;i<response.data[0].scores.length;i++){
+                        this.columns.push(response.data[0].scores[i].index);
+                    }
+                    console.log(this.scores);
+                })
         }
     }
 </script>

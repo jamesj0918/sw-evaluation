@@ -63,20 +63,17 @@
                 }
             }
         },//data
-        mounted(){
+        created(){
             for(let i=1;i<=4;i++){
                 axios.get(i+'/tscore/?student_id='+this.$route.params.student_id)
                     .then((response)=>{
-                        console.log(response);
                         this.data[i-1]=response.data.tscore_average;
                         this.series=[{
                             data: this.data
                         }]
                     })
             }
-
-
-        }
+        },
     }
 </script>
 
