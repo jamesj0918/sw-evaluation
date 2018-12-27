@@ -28,7 +28,6 @@
         props:{
             data: Array,
             columns: Array,
-            filter_key: String,
         },
         data(){
             const sort_orders = {};
@@ -78,13 +77,14 @@
     }
 
     table {
-        border: 2px solid #42b983;
+        border: 2px solid rgb(58,80,99);
         border-radius: 3px;
         background-color: #fff;
+        width: 80%;
     }
 
     th {
-        background-color: #42b983;
+        background-color: rgb(58,80,99);
         color: rgba(255,255,255,0.66);
         cursor: pointer;
         -webkit-user-select: none;
@@ -94,11 +94,12 @@
     }
 
     td {
-        background-color: #f9f9f9;
+        background-color: #f8f8f8;
+        text-align: center;
     }
 
     th, td {
-        min-width: 120px;
+        min-width: AUTO;
         padding: 10px 20px;
     }
 

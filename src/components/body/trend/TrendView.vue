@@ -1,19 +1,15 @@
 <template>
     <div id="trend_view_wrap">
+        <div id="title">
+            {{title}}
+        </div>
         <div id="trend_view">
-            <trend
-                    :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
-                    :gradient="['gray', 'lightgray', 'white']"
-                    auto-draw
-                    :radius="7"
-                    smooth>
-            </trend>
+            <trend-graph></trend-graph>
         </div>
         <div id="trend_table">
-
             <trend-table
-                    :data = "grid_data"
-                    :columns = "grid_columns"
+                    :data = "data"
+                    :columns = "columns"
             ></trend-table>
         </div>
 
@@ -23,36 +19,62 @@
 
 <script>
     import TrendTable from './TrendTable'
+    import TrendGraph from "./TrendGraph";
+
     export default {
         name: "TrendView",
         components:{
+            'trend-graph': TrendGraph,
             'trend-table': TrendTable,
         },
         data(){
             return{
-
-                grid_columns: ['PBName','Score'],
-                grid_data: [
-                    {PBName: '1', Score: 100},
-                    {PBName: '2', Score: 30},
-                    {PBName: '3', Score: 60},
-                    {PBName: '4-1', Score: 0},
-                    {PBName: '4-2', Score: 0},
-                    {PBName: '5-1', Score: 100},
-                    {PBName: '5-2', Score: 100},
-                    {PBName: '5-3', Score: 0},
-                ]
+                test: this.$route.params.test,
+                title: '',
+                data: [{
+                    Num: "1", Name: "문제1", Score: "100", TScore: "50", Highest : "100"
+                }],
+                columns: ["Num", "Name", "Score", "TScore", "Highest"]
             }
-        }
+        },//data
+
+        mounted(){
+            if(this.test == 'C1'){
+                this.title = "C언어 1차 인증"
+            }
+            else if(this.test == 'C2'){
+                this.title = "C언어 2차 인증"
+            }
+            else if(this.test == 'AC1'){
+                this.title = "고급 C언어 1차 인증"
+            }
+            else if(this.test == 'AC2'){
+                this.title = "고급 C언어 2차 인증"
+            }
+            else if(this.test == 'ALL'){
+                this.title
+            }
+        },
     }
 </script>
 
 <style scoped>
+    trend{
+        display: inline-block;
+        width: 50%;
+        height: 10%;
+    }
     #trend_view_wrap{
         display:inline-block;
         width: 100%;
         height: 100%;
         background:rgb(51,54,57);
+    }
+    #title{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        padding-top: 10px;
     }
 
 </style>
